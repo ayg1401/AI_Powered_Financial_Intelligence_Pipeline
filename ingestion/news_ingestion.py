@@ -1,7 +1,7 @@
 import requests
 import json
 
-API_KEY = "a7bd546637844b85aff6df1e68a1c42e"
+API_KEY = ""
 
 url = f"https://newsapi.org/v2/everything?q=stock market&apiKey={API_KEY}"
 
