@@ -3,21 +3,21 @@ from transformation.clean_stock_data import clean_stock_data
 
 
 def run_pipeline():
-    ticker = "RELIANCE.NS"
+    tickers = ["RELIANCE.NS", "TCS.NS", "INFY.NS"]
+    for ticker in tickers:
+        raw_file_path = fetch_stock_data(
+            ticker=ticker,
+            period="6mo",
+            interval="1d"
+        )
 
-    raw_file_path = fetch_stock_data(
-        ticker=ticker,
-        period="6mo",
-        interval="1d"
-    )
+        processed_file_path = clean_stock_data(
+            input_path=raw_file_path,
+            ticker=ticker
+        )
 
-    processed_file_path = clean_stock_data(
-        input_path=raw_file_path,
-        ticker=ticker
-    )
-
-    print("Pipeline completed successfully.")
-    print(f"Final output: {processed_file_path}")
+        print("Pipeline completed successfully.")
+        print(f"Final output: {processed_file_path}")
 
 
 if __name__ == "__main__":
